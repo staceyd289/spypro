@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Verification</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background: #f4f4f4; text-align: center; }
+        .navbar { background: #333; padding: 19px; color: white; display: flex; justify-content: space-between; align-items: center; }
+        .menu { display: none; flex-direction: column; background: #444; position: absolute; top: 60px; right: 10px; width: 150px; }
+        .menu a { color: white; text-decoration: none; padding: 10px; display: block; }
+        .menu a:hover { background: #555; }
+        .menu-btn { cursor: pointer; }
+        .form-container { margin-top: 50px; padding: 50px; background: white; width: 300px; margin: auto; box-shadow: 0px 0px 10px rgba(0,0,0,0.2); border-radius: 10px; }
+        input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; text-align: center; font-size: 18px; }
+        button { width: 100%; padding: 10px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        button:hover { background: #218838; }
+        .popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0,0,0,0.3); }
+        .popup p { font-size: 18px; }
+        .popup button { margin-top: 10px; background: #dc3545; }
+        @media (max-width: 600px) { .menu { width: 100px; } }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h2>Verification</h2>
+        <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    </div>
+    <div class="menu" id="menu">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </div>
+    <div class="form-container">
+        <h3>Enter 4-Digit Code</h3>
+        <input type="text" id="codeInput" maxlength="4" placeholder="Enter Code">
+        <button onclick="checkCode()">Submit</button>
+    </div>
+    <div class="popup" id="popup">
+        <p id="popupMessage"></p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+    <script>
+        function toggleMenu() { document.getElementById('menu').style.display = document.getElementById('menu').style.display === 'block' ? 'none' : 'block'; }
+        function checkCode() {
+            const correctCode = "1234"; 
+            const inputCode = document.getElementById("codeInput").value;
+            const popup = document.getElementById("popup");
+            const message = document.getElementById("popupMessage");
+            if (inputCode === correctCode) {
+                message.textContent = "✅ Success! Code is correct.";
+            } else {
+                message.textContent = "❌ Incorrect code. Try again.";
+            }
+            popup.style.display = "block";
+        }
+        function closePopup() { document.getElementById("popup").style.display = "none"; }
+    </script>
+</body>
+</html>

